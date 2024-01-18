@@ -1,0 +1,232 @@
+/* .Logo{
+    height:40px;
+    width:40px;
+  }
+  .title{
+    font-size: 15px;
+    font-weight: 500;
+    margin-left:15px;
+  }
+  .nav-items{
+    display: flex;
+    width: 65vw;
+    align-items: center;
+    width: 100%;
+    margin-left: 16%;
+    margin-top: 20px;
+  }
+  
+  .card{
+    width: 65vw;
+    top: 0;
+    left: 0;
+    position:absolute;
+    background: white;
+    margin: 0 17%;
+    margin-top: 90px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  #pic{
+    height: 90px;
+    width:100px;
+  }
+  #description{
+    font-weight: 400;
+    flex-grow:1.5;
+     font-size: 18px;
+  }
+  #info{
+      font-weight: 300;
+      font-size: 15px;
+  }
+  #btn{
+    width: 120px;
+     font-size: 15px;
+     background-color:#338574 ;
+     padding: 10px 15px;
+     border-radius: 20px;
+     border: none;
+  }
+  #grid{
+    margin-left :3.8vw;
+    width:88%;
+    margin-top:3vh;
+    border:1px solid lightgray;
+    border-radius: 8px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+#grid1{
+  margin-left:20px ;
+  align-items: center;
+  justify-content:center;
+  margin-bottom: 10px;
+}
+  #link{
+    text-align: center;
+    text-decoration: none;
+     color: white; ;
+  }
+  
+  .instructions{
+    margin-left:30px;
+  }
+  .bold{
+    font-weight: 500;
+  }
+  #title3{
+    margin-left :20px;
+    font-weight: 300;
+    font-size: 28px;
+    color:#404548;
+    margin-bottom:50px ;
+  }
+  .email{
+    padding: 10px;
+    width:220px;
+    text-align: center;
+    border: none;
+    background-color: #f0f2f2;
+    border-radius: 8px;
+    border-bottom: 1px solid #338574;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .username{
+    padding: 10px;
+    width:220px;
+    text-align: center;
+    border: none;
+    background-color: #f0f2f2;
+    border-radius: 8px;
+    border-bottom: 1px solid #338574;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .password{
+    padding: 10px;
+    text-align: center;
+    width:220px;
+    border: none;
+    background-color: #f0f2f2;
+    border-radius: 8px;
+    border-bottom: 1px solid #338574;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .create_acc{
+    display: inline;
+    font-size: 12px;
+    text-decoration: underline;
+    color: #00a884;
+    padding: 0 4px;
+  }
+  .submit{
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    background-color: #338574;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    margin:10px 0;
+  }
+  #googleauth{
+   display:flex;
+   align-items: center;
+   justify-content: flex-end;
+  }
+  .list{
+    font-size:larger;
+     padding-bottom: 20px;
+     font-weight: 400;
+     color:#344651;
+  }
+  #menu{
+    height:17px;
+    width: 10px;
+  }
+  #settings{
+    height: 22px;
+    width: 25px;
+  }
+  #divider{
+    margin:0 40px;
+    border-top: 1px solid lightgray;
+  }
+  .linkwithno{
+    margin: 40px;
+    margin-bottom: 50px;
+  }
+  .linkwithno a{
+    font-size: 17px;
+    text-decoration: none;
+    color:#00a884 ;
+  }
+  .Tutorial{
+    background-color: rgb(245, 245, 245);
+    text-align:  center;
+  }
+
+ #T-title{
+  font-size: 30px;
+   font-weight: 300;
+   padding-top: 40px;
+  color:rgb(25, 59, 59)
+ }
+ #help{
+  color:#338574 ;
+  display: block;
+  text-decoration: none;
+  margin-bottom: 20px;
+ }
+ #video{
+  height: 280px;
+  width:500px;
+  margin-bottom: 40px;
+ }
+
+ #signup{
+  display: none;
+ }
+ @media screen and (max-width: 800px) {
+  .card{
+   width:85vw;
+   margin: 0 5%;
+   margin-top: 90px;
+  }
+  .nav-items{
+    margin-left: 4%;
+  }
+}
+ @media screen and (max-width: 1000px) and (min-width:800px) {
+   .card{
+    width:90vw;
+    margin: 0 5%;
+    margin-top: 90px;
+   }
+   .nav-items{
+    margin-left: 5%;
+  }
+}
+   @media screen and (max-width: 1200px) and (min-width:1000px) {
+    .card{
+     width:80vw;
+     margin: 0 10%;
+     margin-top: 90px;
+    }
+    .nav-items{
+      margin-left: 9%;
+    }
+}
+@media screen and (max-width: 1500px) and (min-width:1200px) {
+  .card{
+   width:74vw;
+   margin: 0 13%;
+   margin-top: 90px;
+  }
+  .nav-items{
+    margin-left: 13%;
+  }
+} */
