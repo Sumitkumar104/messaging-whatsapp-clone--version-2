@@ -3,24 +3,21 @@ const mongoose = require('mongoose');
 const userdemoSchema = new mongoose.Schema({
     name: {
         type: String,
+        require:true
     },
     email: {
         type: String,
+        require:true
     },
     phonenumber: {
         type: String,
+        require:true
     },
     password: {
         type: String,
+        require:true
     },
-    accountType: {
-        type: String,
-        enum: ["admin", "user"],
-        required: true,
-    },
-    token: {
-        type: String,
-    },
+  
     picture: {
         type: String,
     },
@@ -29,14 +26,15 @@ const userdemoSchema = new mongoose.Schema({
     },
 });
 
+
 // Middleware to set 'sub' field equal to 'email' field before saving the document
-userdemoSchema.pre('save', function (next) {
+userdemoSchema.pre('save', function () {
     // Check if 'sub' field is not already set
     if (!this.sub) {
         // Set 'sub' field equal to 'email' field
         this.sub = this.email;
     }
-    next();
+    // next();
 });
 
 const Userdemo = mongoose.model('Userdemo', userdemoSchema);

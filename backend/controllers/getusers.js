@@ -1,9 +1,10 @@
+const Userdemo=require("../models/userschemaauth-v2")
 
-const userschema=require("../models/userschema");
-
+// Take all user from database whose data is present in our code .
 getusers=async(req,res)=>{
     try {
-        const user = await userschema.find({});
+        
+         const user = await Userdemo.find({});
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json(error);

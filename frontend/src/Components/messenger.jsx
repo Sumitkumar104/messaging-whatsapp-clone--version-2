@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
-import { AppBar,Toolbar, styled, Box } from '@mui/material';
+import React, { useContext, useEffect } from 'react'
+import { AppBar, Toolbar, styled, Box } from '@mui/material';
 import Chatdialog from './Chatdialog';
-import Authpage from './Authpage';
 import { AccountContext } from './Contextapi/Accountprovider';
+import Signinpage from './Authpage_v2_component/signinpage';
+
 
 const Component = styled(Box)`
     height: 100vh;
@@ -21,33 +22,42 @@ const LoginHeader = styled(AppBar)`
     box-shadow: none;
 `;
 
- const Messenger=()=> {
-
-  const { account } = useContext(AccountContext);
-
-  return (
-    <Component>
-      {
-           account ?
-           <>
-               <Header>
-                   <Toolbar></Toolbar>
-               </Header>
-               <Chatdialog />
-           </>
-           :
-           <>
-               <LoginHeader>
-                   <Toolbar></Toolbar>
-               </LoginHeader>
-               <Authpage />
-           </>
-      }
-    </Component>
+const Messenger = () => {
 
 
+    const { account } = useContext(AccountContext);
 
-  )
+    return (
+
+
+        account ?
+            <>
+                <Component>
+
+                    <Header>
+                        <Toolbar></Toolbar>
+                    </Header>
+                    <Chatdialog />
+
+                </Component>
+            </>
+            :
+            <>
+               <Signinpage/>
+            </>
+
+
+
+
+
+    )
 }
 
 export default Messenger;
+
+
+/* <LoginHeader>
+                <Toolbar></Toolbar>
+            </LoginHeader> */
+/* <Authpage_v2 /> */
+/* <Authpage /> */
