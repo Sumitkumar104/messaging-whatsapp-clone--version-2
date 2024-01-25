@@ -3,6 +3,7 @@ import { Box, Typography, styled } from '@mui/material';
 import { useContext } from 'react';
 import { AccountContext } from '../../../Contextapi/Accountprovider';
 
+// Styled components for styling the Chatheader component
 const Header = styled(Box)`
     height: 44px;
     background: #ededed;
@@ -22,19 +23,18 @@ const Name = styled(Typography)`
     margin-left: 12px !important;
 `;
 
-
-
 const Status = styled(Typography)`
     font-size: 12px !important;
     color: rgb(0, 0, 0, 0.6);
     margin-left: 12px !important;
 `;
-const emptyimage='https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
-const Chatheader = ({person}) => {
-    
-        
-    const url = person.picture||emptyimage;
-    
+
+// Default profile image URL
+const emptyimage = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
+
+// Functional component representing the Chatheader section
+const Chatheader = ({ person }) => {
+    const url = person.picture || emptyimage;  // Display the profile picture or use the default image
     const { activeUsers } = useContext(AccountContext);
 
     return (
@@ -46,7 +46,6 @@ const Chatheader = ({person}) => {
             </Box>   
         </Header>
     )
-    
 };
 
 export default Chatheader;
