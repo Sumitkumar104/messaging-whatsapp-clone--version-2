@@ -20,7 +20,7 @@ const AccountProvider = ({children}) => {
     }, [])
 
     return (
-        <AccountContext.Provider value={{ 
+        <AccountContext.Provider value={{    /* passing props to the context */
             account, 
             setAccount, 
             showloginButton,
