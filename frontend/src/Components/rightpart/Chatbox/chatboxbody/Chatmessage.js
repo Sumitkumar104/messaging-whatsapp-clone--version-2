@@ -99,7 +99,7 @@ function Chatmessage({ person, conversation }) {
 
             <Component>
                 {
-                    messages && messages.map(message => (
+                    messages && messages.map(message => (     /* extracting messages from database and putting in the components */
                         <Container ref={scrollRef} >
                             <Scrollchat message={message} />
                         </Container>

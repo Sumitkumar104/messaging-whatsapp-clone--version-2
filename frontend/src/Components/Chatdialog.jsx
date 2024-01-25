@@ -6,10 +6,6 @@ import EmptyChat from "./rightpart/Emptybox/emptychat"
 import ChatBox from './rightpart/Chatbox/ChatBox.js';
 import { UserContext } from './Contextapi/Userprovider';
 
-// components
-// import Menu from './menu/Menu';
-// import ChatBox from './chat/ChatBox';
-// import EmptyChat from './chat/EmptyChat';
 
 const Component = styled(Box)`
     display: flex;

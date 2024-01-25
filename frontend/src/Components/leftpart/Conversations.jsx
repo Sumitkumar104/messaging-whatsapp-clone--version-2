@@ -45,7 +45,7 @@ const Conversations =  () => {
         <Component>
             {
                 users && users.map((user, index) => (
-                    user.sub !== account.sub && 
+                    user.sub !== account.sub &&       /*  if user id is same as account if stored then consversations else if will show nothing */
                         <>
                             <Singleuserdata user={user} />
                             {
