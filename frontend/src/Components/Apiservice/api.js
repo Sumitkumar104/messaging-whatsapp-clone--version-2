@@ -1,121 +1,102 @@
-//this app contains our all APIs
+// This app contains all the APIs used in the project
 
 import axios from "axios";
 const url = 'http://localhost:8000';
 
-
-// new signin route for version 2
+// New signin route for version 2
 export const signin = async (data) => {
   try {
-
+    // Make a POST request to the signin route
     let res = await axios.post(`${url}/signin`, data);
     return res;
-
-  }
-  catch (err) {
-    console.log("There is some error in signin route  ")
+  } catch (err) {
+    // Handle errors during the signin process
+    console.log("There is some error in signin route  ");
     console.error(err);
   }
 }
 
-// new signup route for version 2
+// New signup route for version 2
 export const signup = async(data) => {
   try {
-
-   let res= await axios.post(`${url}/signup`, data);
-  //  console.log("in api page of signup ",res)
-  //  console.log("response data is ",res.data," and response status is ",res.status)
+    // Make a POST request to the signup route
+    let res = await axios.post(`${url}/signup`, data);
     return res;
-
-  }
-  catch (err) {
-    console.log("There is some error in signup route  ")
+  } catch (err) {
+    // Handle errors during the signup process
+    console.log("There is some error in signup route  ");
     console.error(err);
   }
 }
 
-
-// This Route go to backend and change the password in database.
-export const forgottenpassword=async(data)=>{
-
+// Route to change the password in the database
+export const forgottenpassword = async(data) => {
   try {
-
+    // Make a POST request to the forgottenpassword route
     let res = await axios.post(`${url}/forgottenpassword`, data);
     return res.data;
-
-  }
-  catch (err) {
-    console.log("There is some error in forgotten password  ")
+  } catch (err) {
+    // Handle errors during the forgotten password process
+    console.log("There is some error in forgotten password  ");
     console.error(err);
   }
-
 }
 
-
-
+// Get user route to fetch all users
 export const getuser = async (data) => {
   try {
+    // Make a GET request to the getuser route
     const response = await axios.get(`${url}/getuser`, data);
-    //  console.log("users are succesfull show in chat list ");
     return response.data;
-  }
-
-  catch (err) {
-    console.log("there is some  error in fetch all users in getuser route")
+  } catch (err) {
+    // Handle errors during the fetch all users process
+    console.log("There is some error in fetch all users in getuser route");
     console.error(err);
   }
-
 }
 
-
-// This function is used to set up the conversation and store the connection in database .
+// Set up the conversation and store the connection in the database
 export const setconversation = async (data) => {
   try {
-
-    await axios.post(`${url}/conversation/add`, data)
-    // console.log(" A user for chatting is successfully choose from contact list in setconversation api")
-
-  }
-  catch (err) {
-    console.log('there is something error to choose the user from the chat list=> ', err.message);
+    // Make a POST request to the setconversation route
+    await axios.post(`${url}/conversation/add`, data);
+  } catch (err) {
+    // Handle errors during the conversation setup process
+    console.log('There is something error to choose the user from the chat list => ', err.message);
   }
 }
 
-
-// this function is used to get the information about the connection set up between the person having sender id and reciever id .
+// Get information about the connection set up between sender and receiver
 export const getconversation = async (data) => {
   try {
-
-    const response = await axios.post(`${url}/conversation/get`, data)
+    // Make a POST request to the getconversation route
+    const response = await axios.post(`${url}/conversation/get`, data);
     return response.data;
-  }
-  catch (err) {
-    console.log('there is something error to choose the user and get information about connection id from the chat list=> ', err.message);
+  } catch (err) {
+    // Handle errors during the information retrieval process
+    console.log('There is something error to choose the user and get information about connection id from the chat list => ', err.message);
   }
 }
 
-
-// this function is used to send the message obtain from 'data' to backend . 
+// Send a message to the backend
 export const sendmessageindatabase = async (data) => {
   try {
-
-    await axios.post(`${url}/message/add`, data)
-
+    // Make a POST request to the send message route
+    await axios.post(`${url}/message/add`, data);
   } catch (err) {
-    console.log("there is some error to send  the message from chatmessage to backend ", err.message);
+    // Handle errors during the message sending process
+    console.log("There is some error to send the message from chatmessage to backend ", err.message);
   }
 }
 
-
-// this function is used to send the message obtain from 'data' to backend . 
+// Get messages from the backend
 export const getmessagefromdatabase = async (id) => {
   try {
-
-    let res = await axios.get(`${url}/message/get/${id}`)
+    // Make a GET request to the get message route
+    let res = await axios.get(`${url}/message/get/${id}`);
     return res.data;
-
-
   } catch (err) {
-    console.log("there is some error to get the message from backend in scrollchat", err.message);
+    // Handle errors during the message retrieval process
+    console.log("There is some error to get the message from backend in scrollchat", err.message);
   }
 }
