@@ -1,29 +1,35 @@
+// Import the Message and Conversation schemas
+const Message = require("../models/mesaagechatschema");
+const Conversation = require("../models/conversationschema");
 
-const Message=require("../models/mesaagechatschema");
-const conversation=require("../models/conversationschema");
-
-
+// Controller to send a message
 exports.sendmessage = async (request, response) => {
-    const message = new Message(request.body);   // this represent a object .
-    try {
-        await message.save();
+    const message = new Message(request.body); // Create a new Message instance with the request body
 
-        // also update the conversation database in which message show the last message .
-        await conversation.findByIdAndUpdate(request.body.conversationid, { message: request.body.text });  // find by conversation id and update by message.
+    try {
+        await message.save(); // Save the message to the database
+
+        // Update the conversation database with the last message
+        await Conversation.findByIdAndUpdate(request.body.conversationid, { message: request.body.text });
+
+        // Respond with success message
         response.status(200).json("Message has been sent successfully");
     } catch (error) {
+        // Handle errors and respond with an error status
         response.status(500).json(error);
     }
-
 }
 
+// Controller to get messages by conversation id
 exports.getmessage = async (request, response) => {
     try {
-        // console.log("paramid",request.data)
+        // Retrieve messages from the Message collection based on the conversation id
         const messages = await Message.find({ conversationid: request.params.id });
-        response.status(200).json(messages);    // send messages in response 
+
+        // Respond with the retrieved messages
+        response.status(200).json(messages);
     } catch (error) {
+        // Handle errors and respond with an error status
         response.status(500).json(error);
     }
-
 }
