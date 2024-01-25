@@ -1,15 +1,19 @@
 import { createContext, useState } from 'react';
 
+// Create a context to manage details of a person for chatting
 export const UserContext = createContext(null);
 
-const UserProvider = ({children}) => {
+const UserProvider = ({ children }) => {
+    // State variable to store details of a person
+    const [person, setperson] = useState({});
 
-    const [ person, setperson ] = useState({});     //  here Person represent the object  which contain the details of that user with which acount holder want to chat. 
-    
+    // Provide the state and functions to components consuming this context
     return (
         <UserContext.Provider value={{ person, setperson }}>
             {children}
         </UserContext.Provider>
-    )
-}
+    );
+};
+
+// Export the UserProvider as the default export
 export default UserProvider;

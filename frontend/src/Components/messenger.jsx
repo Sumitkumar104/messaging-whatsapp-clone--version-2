@@ -1,63 +1,42 @@
-import React, { useContext, useEffect } from 'react'
-import { AppBar, Toolbar, styled, Box } from '@mui/material';
-import Chatdialog from './Chatdialog';
-import { AccountContext } from './Contextapi/Accountprovider';
-import Signinpage from './Authpage_v2_component/signinpage';
+import React, { useContext, useEffect } from "react";
+import { AppBar, Toolbar, styled, Box } from "@mui/material";
+import Chatdialog from "./Chatdialog";
+import { AccountContext } from "./Contextapi/Accountprovider";
+import Signinpage from "./Authpage_v2_component/signinpage";
 
-
+// Styled components for styling the Messenger component
 const Component = styled(Box)`
-    height: 100vh;
-    background: #DCDCDC;
+  height: 100vh;
+  background: #dcdcdc;
 `;
 
 const Header = styled(AppBar)`
-    background-color: #00A884;
-    height: 125px;
-    box-shadow: none;
+  background-color: #00a884;
+  height: 125px;
+  box-shadow: none;
 `;
 
-const LoginHeader = styled(AppBar)`
-    background: #00bfa5;
-    height: 200px;
-    box-shadow: none;
-`;
-
+// Functional component representing the Messenger
 const Messenger = () => {
+  const { account } = useContext(AccountContext);
 
-
-    const { account } = useContext(AccountContext);
-
-    return (
-
-
-        account ?
-            <>
-                <Component>
-
-                    <Header>
-                        <Toolbar></Toolbar>
-                    </Header>
-                    <Chatdialog />
-
-                </Component>
-            </>
-            :
-            <>
-               <Signinpage/>
-            </>
-
-
-
-
-
+  return (
+    // If account exists, then show Chat page; otherwise, show SignIn page
+    account ? (
+      <>
+        <Component>
+          <Header>
+            <Toolbar></Toolbar>
+          </Header>
+          <Chatdialog /> {/* Chat page when user is logged in */}
+        </Component>
+      </>
+    ) : (
+      <>
+        <Signinpage /> {/* Sign-in page when user is not logged in */}
+      </>
     )
-}
+  );
+};
 
 export default Messenger;
-
-
-/* <LoginHeader>
-                <Toolbar></Toolbar>
-            </LoginHeader> */
-/* <Authpage_v2 /> */
-/* <Authpage /> */

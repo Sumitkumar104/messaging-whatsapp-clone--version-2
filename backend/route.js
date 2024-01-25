@@ -1,26 +1,25 @@
 const express = require("express");
 const route = express.Router();
 
+const getusers = require("./controllers/getusers"); // Route to fetch user contacts.
+const { setconversation, getconversation } = require("./controllers/conversationcontroller"); // Routes for conversation management.
+const { sendmessage, getmessage } = require("./controllers/messagecontroller"); // Routes for sending and fetching messages.
+const { signin, signup, forgottenpassword } = require("./controllers/Auth_v2"); // Authentication routes.
 
-const getusers = require("./controllers/getusers");    // use to show the contacts with which he chats previously.
-const {setconversation,getconversation} = require("./controllers/conversationcontroller");
-const {sendmessage,getmessage}=require("./controllers/messagecontroller");
-const {signin,signup,forgottenpassword}=require("./controllers/Auth_v2");
-const { sign } = require("crypto");
+// Route to get user contacts
+route.get("/getuser", getusers);
 
+// Routes for managing conversations
+route.post("/conversation/add", setconversation); // Add a conversation
+route.post("/conversation/get", getconversation); // Get conversation details
 
-route.get("/getuser", getusers);          //  it return user object which conatin contacts in response .
+// Routes for sending and fetching messages
+route.post("/message/add", sendmessage); // Send a message
+route.get("/message/get/:id", getmessage); // Get messages by conversation ID
 
-route.post("/conversation/add", setconversation);  // this is api call which excute function setconversation in serviceapi folders in which request body contain sender and reciever id.
-route.post("/conversation/get",getconversation);  
-
-route.post("/message/add",sendmessage);  // this route is used to send message in database . 
-route.get("/message/get/:id",getmessage);  // this route is used to get message from database . 
-
-
-// for version 2
-route.post("/signup",signup);
-route.post("/signin",signin);
-route.post("/forgottenpassword",forgottenpassword)
+// Authentication routes for version 2
+route.post("/signup", signup); // User signup
+route.post("/signin", signin); // User signin
+route.post("/forgottenpassword", forgottenpassword); // Forgotten password recovery
 
 module.exports = route;

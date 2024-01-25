@@ -1,16 +1,13 @@
 import React, { useContext } from 'react'
 import { Dialog, styled, Box } from '@mui/material';
 
+// Components
 import Conversations from './leftpart/Conversations';
 import EmptyChat from "./rightpart/Emptybox/emptychat"
 import ChatBox from './rightpart/Chatbox/ChatBox.js';
 import { UserContext } from './Contextapi/Userprovider';
 
-// components
-// import Menu from './menu/Menu';
-// import ChatBox from './chat/ChatBox';
-// import EmptyChat from './chat/EmptyChat';
-
+// Styled components for styling the Chatdialog component
 const Component = styled(Box)`
     display: flex;
 `;
@@ -26,6 +23,7 @@ const RightComponent = styled(Box)`
     border-left: 1px solid rgba(0, 0, 0, 0.14);
 `;
 
+// Style for the Dialog component
 const dialogStyle = {
     height: '95%',
     width: '100%',
@@ -37,8 +35,8 @@ const dialogStyle = {
     overflow: 'hidden'
 };
 
+// Functional component representing the Chatdialog
 function Chatdialog() {
-
     const { person } = useContext(UserContext);
 
     return (
@@ -49,20 +47,16 @@ function Chatdialog() {
             maxWidth={'md'}
         >
             <Component>
-
-
                 <LeftComponent>
-                     <Conversations />           {/* left part */}
+                    <Conversations /> {/* Left part (Conversations component) */}
                 </LeftComponent>
 
-
-                <RightComponent>                   
-                      {  Object.keys(person).length ? <ChatBox /> : <EmptyChat />   }             {/* right part */}  
+                <RightComponent>
+                    {Object.keys(person).length ? <ChatBox /> : <EmptyChat />} {/* Right part (ChatBox or EmptyChat based on whether there's a selected user) */}
                 </RightComponent>
-
             </Component>
         </Dialog>
-
     )
 }
-export default Chatdialog
+
+export default Chatdialog;
