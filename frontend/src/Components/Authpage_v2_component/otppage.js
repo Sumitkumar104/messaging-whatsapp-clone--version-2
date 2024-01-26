@@ -1,83 +1,71 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRotateRight } from '@fortawesome/free-solid-svg-icons'
+import React, { useState,useContext } from "react";
 import "./Otp.css"
-import { Button } from "@mui/material";
+import { signup } from "../Apiservice/api";
+import { AccountContext } from "../Contextapi/Accountprovider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Otp = () => {
+
+const Otppage = ({name,email,phonenumber,password,otp}) => {
+
+  const { setAccount } = useContext(AccountContext);
+  
   // State to manage OTP input values
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-
-  // Ref to store input references
-  const inputRefs = useRef([]);
-
-  // Use effect to focus on the first input when component mounts
-  useEffect(() => {
-    if (inputRefs.current[0]) {
-      inputRefs.current[0].focus();
-    }
-  }, []);
-
-  // Handle OTP input change
-  const handleChange_Otp = (index, e) => {
-    const value = e.target.value;
-    if (isNaN(value)) return; // Only allow numeric input
-
-    const newOtp = [...otp];
-    newOtp[index] = value.substring(value.length - 1);
-    setOtp(newOtp);
+  const [enterotp, setenterOtp] = useState("");
+  
+ const handleverifyuser=async()=>{
+    try{
     
-    // Move focus to the next input if not last
-    if (value && index < 5 && inputRefs.current[index + 1]) {
-      inputRefs.current[index + 1].focus();
+      if(enterotp===otp){      
+     // Make a signup API call
+    const response = await signup({
+      name: name,
+      email: email,
+      phonenumber: phonenumber,
+      password: password,
+    });
+
+    // Handle the API response
+    if (response.status === 200) {
+      // If signup is successful, set the account in context
+      setAccount(response.data);
     }
-
-    // Check if OTP is complete and submit
-    const combinedOtp = newOtp.join("");
-    if (combinedOtp.length === 6) onsubmit(combinedOtp);
-  };
-
-  // Handle key down event for OTP input
-  const handleKeyDown_Otp = (index, e) => {
-    // Move focus to the previous input on backspace
-    if (e.key === "Backspace" && !otp[index] && index > 0 && inputRefs.current[index - 1]) {
-      inputRefs.current[index - 1].focus();
+    if (response.status === 203) {
+      // If the user already exists with this email, show a toast notification
+      toast("A user with this email already exists. Please sign in.");
     }
-  };
-
-  // Handle OTP submission
-  const onsubmit = (otp) => {
-    console.log("Login Successful", otp);
-    // Add your logic for handling OTP submission
-  };
-
+        
+        
+      }else{
+        toast("otp do not match")
+      }
+      
+    }catch(err){
+      console.log("there is some error to verify the otp ",err)
+    }
+  }
+  
   return (
     <div className="Otp_Container">
       <div className="inner_Otp_Container">
         <h1>Verify</h1>
         <p className="Otp_page_info">A verification code has been sent to you. Enter the code below</p>
         
-        {otp.map((value, index) => {
-          return (
+        
             <input
-              key={index}
               type="text"
-              ref={(input) => (inputRefs.current[index] = input)}
-              value={value}
-              onChange={(e) => handleChange_Otp(index, e)}
-              onKeyDown={(e) => handleKeyDown_Otp(index, e)}
+              placeholder="enter your otp here"
+              value={enterotp}
+              onChange={(e) => setenterOtp(e.target.value)}
               className="otpInput"
             />
-          );
-        })}
-        <button className="Otp_button">Verify and Register</button>
+          
+        <button className="Otp_button" onClick={handleverifyuser}>Verify and Register</button>
       </div>
-      <div className="Otp_Page_buttom">
-        <div className='Otppage_goto_loginpage'><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faArrowLeft} />Back to Login</div>
-        <Button><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faArrowRotateRight} />Resend it</Button>
-      </div>
+      <ToastContainer/>
     </div>
+  
   );
 };
 
-export default Otp;
+export default Otppage;

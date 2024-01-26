@@ -29,6 +29,16 @@ export const signup = async(data) => {
   }
 }
 
+// api call to send otp at email
+export const sendotp=async(data)=>{
+  try{
+    let res=await axios.post(`${url}/sendotp`,data);
+    return res;
+  }catch(err){
+    console.log('there is error to send otp email ',err);
+  }
+}
+
 // Route to change the password in the database
 export const forgottenpassword = async(data) => {
   try {

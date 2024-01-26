@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Signuppage from "./signuppage";
 import { signin } from "../Apiservice/api";
 import { useContext } from "react";
 import { AccountContext } from "../Contextapi/Accountprovider";
-import './tailwindfile.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./signinpage.css"
 
 export default function Signinpage() {
   // Context for managing the user account
   const { setAccount } = useContext(AccountContext);
   
-  // Hook for navigation
-  const navigate = useNavigate();
 
   // State variables for email, password, and controlling the rendering of Signuppage
   const [email, setemail] = useState(null);
@@ -57,35 +53,33 @@ export default function Signinpage() {
       {showSignuppage ? (
         <Signuppage />
       ) : (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#00a884] to-[#f0f2f5]">
-          <div className="bg-white p-10 rounded-2xl shadow-2xl w-[28rem]">
-            <div className="flex justify-center">
-              <h2 className="text-2xl font-bold mb-4 ">Login</h2>
-            </div>
-            {/* Form inputs */}
+        <div className="signin_page_main">
+        <div className="signin_page_inner">
+  
+          <div className="signinpage_title"><h2 className="signin_title">Login</h2></div>
             <div className="mb-4">
-              <label htmlFor="phoneNumber" className="block text-sm font-medium">
+              <label htmlFor="phoneNumber" className="signin_label">
                 Email Address
               </label>
               <input
                 type="tel"
                 id="phoneNumber"
                 name="phoneNumber"
-                className="mt-1 p-2 w-full rounded border focus:outline-none focus:ring focus:border-white"
+                className="signin_input"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium">
+              <label htmlFor="password" className="signin_label">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
                 name="password"
-                className="mt-1 p-2 w-full rounded border focus:outline-none focus:ring focus:border-white"
+                className="signin_input"
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setpassword(e.target.value)}
@@ -94,13 +88,13 @@ export default function Signinpage() {
             {/* Signin button */}
             <button
               type="submit"
-              className="w-full bg-[#008069] text-white p-2 rounded focus:outline-none focus:ring focus:border-white"
+              className="signin_button"
               onClick={signinhandler}
             >
               Sign In
             </button>
             {/* Link to go to the Signuppage */}
-            <button className="mt-4 text-sm text-center text-medium text-blue-700 " onClick={routetosignuppagehandler}>
+            <button className="signin_page_info" onClick={routetosignuppagehandler}>
               Don't have an account? Sign Up
             </button>
             {/* Toast notifications container */}

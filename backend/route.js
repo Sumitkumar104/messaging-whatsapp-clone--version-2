@@ -5,6 +5,7 @@ const getusers = require("./controllers/getusers"); // Route to fetch user conta
 const { setconversation, getconversation } = require("./controllers/conversationcontroller"); // Routes for conversation management.
 const { sendmessage, getmessage } = require("./controllers/messagecontroller"); // Routes for sending and fetching messages.
 const { signin, signup, forgottenpassword } = require("./controllers/Auth_v2"); // Authentication routes.
+const {sendotp}=require("./controllers/sendotp");
 
 // Route to get user contacts
 route.get("/getuser", getusers);
@@ -21,5 +22,6 @@ route.get("/message/get/:id", getmessage); // Get messages by conversation ID
 route.post("/signup", signup); // User signup
 route.post("/signin", signin); // User signin
 route.post("/forgottenpassword", forgottenpassword); // Forgotten password recovery
+route.post("/sendotp",sendotp);
 
 module.exports = route;
