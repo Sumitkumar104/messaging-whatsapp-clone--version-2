@@ -4,6 +4,8 @@ require("dotenv").config();
 exports.sendotp=async(req,res)=>{
     try{
         const {email,otp}=req.body;
+        const hostemail=process.env.hostemail;
+        const hostpass=process.env.hostpass;
 
           // transporter
           const transporter = nodemailer.createTransport({
@@ -15,8 +17,8 @@ exports.sendotp=async(req,res)=>{
             debug:true,
             secureconnection:true,
             auth: {
-                user:"sumitbawalia104@gmail.com",
-                pass:"jyoxetmvumnipnwk",
+                user:hostemail,
+                pass:hostpass,
             },
 
         });
@@ -26,6 +28,7 @@ exports.sendotp=async(req,res)=>{
             subject: ' OTP for whatsapp verification ',
             text:`your OTP for whatsapp Signup is ${otp}`,
         });
+        
         res.status(200).json(`otp send successfully to ${email}`);
         return ;
 
