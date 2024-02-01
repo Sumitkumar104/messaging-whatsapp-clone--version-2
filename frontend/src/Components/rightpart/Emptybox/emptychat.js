@@ -1,4 +1,12 @@
 import { Box, styled, Typography, Divider } from '@mui/material';
+import {EmptyChatConfig} from '../../../config'; 
+
+const {
+    image,
+    title,
+    subtitle1,
+    subtitle2
+  } = EmptyChatConfig;
 
 // Styled component for the main container
 const Component = styled(Box)`
@@ -42,18 +50,15 @@ const StyledDivider = styled(Divider)`
     opacity: 0.4;
 `;
 
-// Default image URL
-const imageurl = process.env.REACT_APP_IMAGE_URL || "";
-
 // Component for displaying an empty chat message
 const EmptyChat = () => {
     return (
         <Component>
             <Container>
-                <Image src={imageurl} alt="empty" />
-                <Title>{process.env.REACT_APP_TITLE}</Title>
-                <SubTitle>{process.env.REACT_APP_SUBTITLE_1}</SubTitle>
-                <SubTitle>{process.env.REACT_APP_SUBTITLE_2}</SubTitle>
+                <Image src={image}  alt="empty" />
+                <Title>{title}</Title>
+                <SubTitle>{subtitle1}</SubTitle>
+                <SubTitle>{subtitle2}</SubTitle>
                 <StyledDivider />
             </Container>
         </Component>

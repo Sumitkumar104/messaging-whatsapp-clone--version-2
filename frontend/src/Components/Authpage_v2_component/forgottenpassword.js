@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
-import "./ForgetPassword.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
-import { forgottenpassword } from '../Apiservice/api'
+import React, { useState } from 'react';
+import "./ForgetPassword.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { forgottenpassword } from '../Apiservice/api';
 import { useNavigate } from "react-router-dom";
+import{ ForgottenPasswordConfig} from '../../config';
 
 const ForgetPassword = (email) => {
-  // Initialize navigate function from react-router-dom
   const navigate = useNavigate();
-
-  // Destructure email from props
   const emaill = email;
 
-  // State for password and confirm password
   const [password, setpassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
 
-  // Refs for password strength indicators
   let myInput = document.getElementById("password");
   let letter = document.getElementById("letter");
   let capital = document.getElementById("capital");
@@ -24,25 +20,20 @@ const ForgetPassword = (email) => {
   let length = document.getElementById("length");
   let specialchar = document.getElementById("specialch");
 
-  // Function to display strength indicators
   const focus = () => {
     document.getElementById("message").style.display = "block";
   }
 
-  // Function to hide strength indicators
   const blur = () => {
     document.getElementById("message").style.display = "none";
   }
 
-  // Function to check password strength on keyup
   const keyup = () => {
-    // Regular expressions for password strength
     let lowerCaseLetters = /[a-z]/g;
     let upperCaseLetters = /[A-Z]/g;
     let numbers = /[0-9]/g;
     let special = /[@#$&^!*.~`/?,+-_=()<>]/g;
 
-    // Check and update strength indicators based on password content
     if (myInput.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
@@ -84,17 +75,16 @@ const ForgetPassword = (email) => {
     }
   }
 
-  // Function to handle password change
   const changePasswordhandler = async () => {
     if (confirmpassword === password) {
       let result = forgottenpassword({ email: emaill, password: confirmpassword });
 
       if (result.success === true) {
         navigate("/");
-        alert('Password changed successfully');
+        alert(ForgottenPasswordConfig.messages.passwordChangedSuccessfully);
       }
     } else {
-      document.getElementById('ForgetpaswPage_error').innerHTML = 'Passwords are not matching';
+      document.getElementById('ForgetpaswPage_error').innerHTML = ForgottenPasswordConfig.messages.passwordsNotMatching;
     }
   }
 
@@ -114,7 +104,7 @@ const ForgetPassword = (email) => {
             name="password"
             value={password}
             onChange={(e) => setpassword(e.target.value)}
-            placeholder='Enter your password'
+            placeholder={ForgottenPasswordConfig.placeholders.newPassword}
             onClick={focus}
             onBlur={blur}
             onKeyUp={keyup}
@@ -130,15 +120,15 @@ const ForgetPassword = (email) => {
             required="required"
             value={confirmpassword}
             onChange={(e) => setConfirmpassword(e.target.value)}
-            placeholder='Re-enter your password'
+            placeholder={ForgottenPasswordConfig.placeholders.confirmPassword}
           />
           <h3 className='ForgetpaswPage_instructions'>Password must contain the following:</h3>
           <div id="message">
-            <p id="letter" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> one lowercase letter</p>
-            <p id="capital" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> one capital uppercase letter</p>
-            <p id="number" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> one number</p>
-            <p id="length" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> Minimum 8 characters</p>
-            <p id="specialch" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> one special char characters</p>
+            <p id="letter" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> {ForgottenPasswordConfig.passwordRequirements.lowercaseLetter}</p>
+            <p id="capital" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> {ForgottenPasswordConfig.passwordRequirements.uppercaseLetter}</p>
+            <p id="number" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> {ForgottenPasswordConfig.passwordRequirements.number}</p>
+            <p id="length" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> {ForgottenPasswordConfig.passwordRequirements.minLength}</p>
+            <p id="specialch" className="invalid"><FontAwesomeIcon className="ForgetpaswPage_icon" icon={faCircleCheck} /> {ForgottenPasswordConfig.passwordRequirements.specialChar}</p>
           </div>
           <button className='ForgetpaswPage_button'>Reset Password</button>
           <p id='ForgetpaswPage_error'></p>
