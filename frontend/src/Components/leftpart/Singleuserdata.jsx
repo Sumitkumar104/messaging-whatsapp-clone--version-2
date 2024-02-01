@@ -46,7 +46,7 @@ const Text = styled(Typography)`
 `;
 
 // Default picture URL when user picture is not available
-const emptypicture = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
+const emptypicture = process.env.REACT_APP_DEFAULT_EMPTY_PICTURE_URL;
 
 function Singleuserdata({ user }) {
   const url = user.picture || emptypicture; // Display picture URL
