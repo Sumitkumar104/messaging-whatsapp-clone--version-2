@@ -30,7 +30,7 @@ const Status = styled(Typography)`
 `;
 
 // Default profile image URL
-const emptyimage = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
+const emptyimage = process.env.REACT_APP_DEFAULT_PROFILE_IMAGE_URL;
 
 // Functional component representing the Chatheader section
 const Chatheader = ({ person }) => {

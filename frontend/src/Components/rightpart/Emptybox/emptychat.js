@@ -43,7 +43,7 @@ const StyledDivider = styled(Divider)`
 `;
 
 // Default image URL
-const imageurl = "https://i.gadgets360cdn.com/large/whatsapp_multi_device_support_update_image_1636207150180.jpg";
+const imageurl = process.env.REACT_APP_IMAGE_URL || "";
 
 // Component for displaying an empty chat message
 const EmptyChat = () => {
@@ -51,9 +51,9 @@ const EmptyChat = () => {
         <Component>
             <Container>
                 <Image src={imageurl} alt="empty" />
-                <Title>WhatsApp Web</Title>
-                <SubTitle>Now send and receive messages without keeping your phone online.</SubTitle>
-                <SubTitle>Use WhatsApp on up to 4 linked devices and 1 phone at the same time. </SubTitle>
+                <Title>{process.env.REACT_APP_TITLE}</Title>
+                <SubTitle>{process.env.REACT_APP_SUBTITLE_1}</SubTitle>
+                <SubTitle>{process.env.REACT_APP_SUBTITLE_2}</SubTitle>
                 <StyledDivider />
             </Container>
         </Component>

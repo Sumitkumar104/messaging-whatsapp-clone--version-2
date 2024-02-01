@@ -39,7 +39,7 @@ function Chatfooter({ sendtext, settext, textt }) {
       <Search>
         {/* Input field for typing the message */}
         <InputField
-          placeholder="Type a message"
+          placeholder={process.env.REACT_APP_DEFAULT_PLACEHOLDER_TEXT}
           onChange={(e) => settext(e.target.value)} // Update the text in the state when input changes
           onKeyPress={(e) => sendtext(e)} // Trigger the sendtext function when a key is pressed
           value={textt} // The current value of the input field
