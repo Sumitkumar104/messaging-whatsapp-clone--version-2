@@ -18,7 +18,7 @@ const AccountProvider = ({ children }) => {
     // Initialize the WebSocket connection when the component mounts
     useEffect(() => {
         // Create a WebSocket connection to the specified server
-        socket.current = io('ws://localhost:9000');
+        socket.current = io(process.env.REACT_APP_SOCKET_SERVER_URL);
     }, []);
 
     // Provide the state and functions to components consuming this context

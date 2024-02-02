@@ -1,7 +1,9 @@
 // This app contains all the APIs used in the project
 
 import axios from "axios";
-const url = 'http://localhost:8000';
+import {ApiConfig} from '../../config';
+
+const url = ApiConfig.apiUrl;
 
 // New signin route for version 2
 export const signin = async (data) => {

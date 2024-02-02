@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, Typography, styled } from '@mui/material';
-import { useContext } from 'react';
 import { AccountContext } from '../../../Contextapi/Accountprovider';
+import {ChatHeaderConfig} from '../../../../config'; 
 
-// Styled components for styling the Chatheader component
+const { defaultImageURL, onlineStatus, offlineStatus } = ChatHeaderConfig;
+
 const Header = styled(Box)`
     height: 44px;
     background: #ededed;
@@ -17,7 +18,7 @@ const Image = styled('img')({
     height: 40,
     objectFit: 'cover',
     borderRadius: '50%'
-})
+});
 
 const Name = styled(Typography)`
     margin-left: 12px !important;
@@ -29,12 +30,10 @@ const Status = styled(Typography)`
     margin-left: 12px !important;
 `;
 
-// Default profile image URL
-const emptyimage = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
+const emptyimage = defaultImageURL;
 
-// Functional component representing the Chatheader section
 const Chatheader = ({ person }) => {
-    const url = person.picture || emptyimage;  // Display the profile picture or use the default image
+    const url = person.picture || emptyimage;
     const { activeUsers } = useContext(AccountContext);
 
     return (
@@ -42,10 +41,10 @@ const Chatheader = ({ person }) => {
             <Image src={url} alt="display picture" />     
             <Box>
                 <Name>{person.name}</Name>
-                <Status>{activeUsers?.find(user => user.sub === person.sub) ? 'Online' : 'Offline'}</Status>    
+                <Status>{activeUsers?.find(user => user.sub === person.sub) ? onlineStatus : offlineStatus}</Status>    
             </Box>   
         </Header>
-    )
+    );
 };
 
 export default Chatheader;

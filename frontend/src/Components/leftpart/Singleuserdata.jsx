@@ -4,6 +4,7 @@ import { AccountContext } from '../Contextapi/Accountprovider';
 import { setconversation } from '../Apiservice/api';
 import { getconversation } from '../Apiservice/api';
 import { styled, Box, Typography } from "@mui/material";
+import { DefaultPictureURL } from '../../config';
 
 // Function to format the timestamp
 const formatDate = (date) => {
@@ -46,7 +47,7 @@ const Text = styled(Typography)`
 `;
 
 // Default picture URL when user picture is not available
-const emptypicture = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
+const emptypicture = DefaultPictureURL;
 
 function Singleuserdata({ user }) {
   const url = user.picture || emptypicture; // Display picture URL
