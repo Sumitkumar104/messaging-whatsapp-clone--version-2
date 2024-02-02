@@ -12,4 +12,4 @@ exports.databaseconnection = async () => {
         // Handle connection errors and log the error message
         console.log('Error: ', error.message);
     }
-};afjjnaflssndlf
+};
