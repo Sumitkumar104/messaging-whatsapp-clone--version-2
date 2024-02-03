@@ -23,7 +23,11 @@ const Otppage = ({ name, email, phonenumber, password, otp }) => {
         });
 
         if (response.status === 200) {
-          setAccount(response.data);
+               // If signup is successful, set the account in context
+      
+      setAccount(response?.data?.user);
+      // console.log("token is ",response?.data?.token)
+      sessionStorage.setItem('token', response?.data?.token);
         }
 
         if (response.status === 203) {
@@ -31,6 +35,7 @@ const Otppage = ({ name, email, phonenumber, password, otp }) => {
         }
       } else {
         toast(OTPConfig.messages.otpMismatch);
+        
       }
 
     } catch (err) {

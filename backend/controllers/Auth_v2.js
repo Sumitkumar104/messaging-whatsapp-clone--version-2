@@ -2,6 +2,7 @@
 const Userdemo = require("../models/userschemaauth-v2");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Signup controller
 exports.signup = async (req, res) => {
@@ -27,7 +28,12 @@ exports.signup = async (req, res) => {
             password: hashedPassword,
         });
 
-        res.status(200).json(user);
+         // Generate the token for user 
+         const token = jwt.sign({ user }, process.env.jwt_secret, { expiresIn: "1h" });
+
+        // send the cookies in response
+        res.status(200).json({user,token});
+
     } catch (error) {
         console.error(error);
         return res.status(500).json({
@@ -55,9 +61,15 @@ exports.signin = async (req, res) => {
             bcrypt.compare(password, user.password)
                 .then((result) => {
                     if (result) {
-                        res.status(200).json(user); // Passwords match
+
+                        // Generate the token for user 
+                        const token = jwt.sign({user}, process.env.jwt_secret, { expiresIn: "1h" });
+
+                        res.status(200).json({user,token}); // Passwords match
+                        // res.status(200).json(user); // Passwords match
                         return;
-                    } else {
+                    }
+                    else {
                         res.status(203).json("Password does not match"); // Passwords do not match
                         return;
                     }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Dialog, styled, Box } from '@mui/material';
+import { Dialog, styled, Box, AppBar } from '@mui/material';
 
 // Components
 import Conversations from './leftpart/Conversations';
@@ -35,11 +35,24 @@ const dialogStyle = {
     overflow: 'hidden'
 };
 
+const Componentforback = styled(Box)`
+  height: 100vh;
+  background: #dcdcdc;
+`;
+
+const Header = styled(AppBar)`
+  background-color: #00a884;
+  height: 125px;
+  box-shadow: none;
+`;
+
 // Functional component representing the Chatdialog
 function Chatdialog() {
     const { person } = useContext(UserContext);
 
     return (
+        <Componentforback>
+            <Header>
         <Dialog
             open={true}
             BackdropProps={{ style: { backgroundColor: 'unset' } }}
@@ -56,6 +69,8 @@ function Chatdialog() {
                 </RightComponent>
             </Component>
         </Dialog>
+        </Header>
+        </Componentforback>
     )
 }
 
