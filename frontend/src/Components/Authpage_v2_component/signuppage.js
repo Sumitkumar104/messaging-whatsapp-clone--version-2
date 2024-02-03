@@ -1,11 +1,9 @@
-// Signuppage.js
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Signinpage from "./signinpage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { sendotp } from "../Apiservice/api";
 import Otppage from "./otppage";
-import Signinpage from "./signinpage";
 import { SignupConfig } from "../../config";
 import "./signuppage.css";
 
@@ -21,7 +19,10 @@ export default function Signuppage() {
   const [password, setpassword] = useState("");
   const [otp, setotp] = useState(generaterandomnumber().toString());
   const [confirmpassword, setconfirmpassword] = useState("");
-
+  const [isEmailValid, setisEmailValid] = useState(true);
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
+  const [isPassStrong, setIsPassStrong] = useState(true);
+  const [isSamePass, setIsSamePass] = useState(true);
   // State variable to control rendering of Signinpage component
   const [showSigninPage, setShowSigninPage] = useState(false);
   const [showotppage, setshowotppage] = useState(false);
@@ -30,19 +31,40 @@ export default function Signuppage() {
   const gotosigninpagehandler = () => {
     setShowSigninPage(true);
   };
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
+    setisEmailValid(isValid);
+  };
+  const validatePhoneNumber = () => {
+    const phoneRegex = /^\d{10}$/;
+    const isValid = phoneRegex.test(phonenumber);
+    setIsPhoneNumberValid(isValid);
+  };
+  const isStrongPassword = () => {
+    // Minimum 8 characters, at least one uppercase letter, one lowercase letter, and one special character
+    const strongPasswordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const isStrong = strongPasswordRegex.test(password);
+    setIsPassStrong(isStrong);
+  };
+  const matchPass = () => {
+    const ismatch = confirmpassword === password;
+    setIsSamePass(ismatch);
+  };
 
+  const isFormValid =() =>{
+    return name.trim() !== '' && email.trim() !=='' && phonenumber.trim() !== '' && password.trim() !== '' && isPassStrong && confirmpassword.trim() !== '' && isSamePass;
+  }
   // Function to handle the signup process
   const signuphandler = async () => {
     try {
-      // Check if passwords match
-      if (confirmpassword === password) {
         // send otp to email
+        //  demotest = generaterandomnumber();
+        // setotp(demotest);
+        console.log(otp);
         await sendotp({ email: email, otp: otp });
         setshowotppage(true);
-      } else {
-        // If passwords don't match, show a toast notification
-        toast(SignupConfig.toastMessages.passwordMismatch);
-      }
     } catch (err) {
       console.log("Error in signup process in Signuppage", err);
     }
@@ -81,10 +103,17 @@ export default function Signuppage() {
               <input
                 type="email"
                 className="signup_input"
-                placeholder={SignupConfig.placeholderTexts.email}
+                placeholder={SignupConfig.placeholderTexts.email}              
+                id="email"
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
+                onBlur={validateEmail}
               />
+              {!isEmailValid && (
+                <span style={{ color: "red" }}>
+                  Please enter a valid email address
+                </span>
+              )}
             </div>
             <div>
               <label className="signup_label">Phone Number</label>
@@ -94,19 +123,32 @@ export default function Signuppage() {
                 placeholder={SignupConfig.placeholderTexts.phoneNumber}
                 value={phonenumber}
                 onChange={(e) => setphonenumber(e.target.value)}
+                onBlur={validatePhoneNumber}
               />
+              {!isPhoneNumberValid && (
+                <span style={{ color: "red" }}>
+                  Please enter a valid phone number
+                </span>
+              )}
             </div>
             <div>
               <label className="signup_label">Password</label>
               <input
                 type="password"
                 className="signup_input"
-                placeholder={SignupConfig.placeholderTexts.password}
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setpassword(e.target.value)}
+                onBlur={isStrongPassword}
               />
+              {!isPassStrong && (
+                <span style={{ color: "red" }}>
+                  Password needed to be strong
+                </span>
+              )}
             </div>
             <div>
+             
               <label className="signup_label">Confirm Password</label>
               <input
                 type="password"
@@ -114,13 +156,25 @@ export default function Signuppage() {
                 placeholder={SignupConfig.placeholderTexts.confirmPassword}
                 value={confirmpassword}
                 onChange={(e) => setconfirmpassword(e.target.value)}
+                onBlur={() => {matchPass();
+                  setotp(generaterandomnumber())
+                }}
               />
+              {!isSamePass && (
+                <span style={{ color: "red" }}>
+                  Password doesn't match
+                </span>
+              )}
             </div>
             {/* Signup button */}
             <button
               type="submit"
-              onClick={signuphandler}
+              onClick={()=>{
+                
+                signuphandler();
+              }}
               className="signup_button"
+              disabled = {!isFormValid()}
             >
               Sign Up
             </button>

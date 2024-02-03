@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right,#00a884,#f0f2f5);
+    background: linear-gradient(to right,#02A388,#F9F9F9);
     min-height: 100vh;
 }
 .signin_page_inner{
@@ -44,9 +44,26 @@
     margin-top: 15px;
     margin-left: 5px;
     outline: none;
-    border: 1px solid white;
+    border: 2px solid transparent;
+    font-weight: 600;
+}
+.signin_button:hover{
+    border: 2px solid black;
+    cursor:pointer;
 }
 .signin_page_info{
     text-align: center;
+    border-radius: 0.5rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem;
+    background-color: #00a884;
+    color: #f0f2f5;
+    border: 2px solid transparent;
+    font-weight: 500;
 
+}
+.signin_page_info:hover{
+    background-color: #018065;
+    border: 2px solid black;
+    cursor: pointer;
 }

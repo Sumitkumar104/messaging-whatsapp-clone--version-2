@@ -16,6 +16,7 @@ export default function Signinpage() {
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
   const [showSignuppage, setShowSignuppage] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
 
   useEffect(() => {
@@ -39,7 +40,12 @@ export default function Signinpage() {
   // Function to navigate to the Signuppage component
   const routetosignuppagehandler = () => {
     setShowSignuppage(true);
-  }
+  };
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
+    setIsEmailValid(isValid);
+  };
 
   const signinhandler = async () => {
     try {
@@ -62,7 +68,7 @@ export default function Signinpage() {
         toast(SigninConfig.messages.enterCredentials);
       }
     } catch (err) {
-      console.log('Error in signin page', err);
+      console.log("Error in signin page", err);
     }
   };
 
@@ -73,21 +79,28 @@ export default function Signinpage() {
       ) : (
         <div className="signin_page_main">
           <div className="signin_page_inner">
-
-            <div className="signinpage_title"><h2 className="signin_title">Login</h2></div>
+            <div className="signinpage_title">
+              <h2 className="signin_title">Login</h2>
+            </div>
             <div className="mb-4">
-              <label htmlFor="phoneNumber" className="signin_label">
+              <label htmlFor="email" className="signin_label">
                 Email Address
               </label>
               <input
-                type="tel"
-                id="phoneNumber"
-                name="phoneNumber"
+                type="email"
+                id="email"
+                name="email"
                 className="signin_input"
                 placeholder={SigninConfig.placeholders.email}
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
+                onBlur={validateEmail}
               />
+              {!isEmailValid && (
+                <span style={{ color: "red" }}>
+                  Please enter a valid email address
+                </span>
+              )}
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="signin_label">
@@ -110,7 +123,11 @@ export default function Signinpage() {
             >
               Sign In
             </button>
-            <button className="signin_page_info" onClick={routetosignuppagehandler}>
+            {/* Link to go to the Signuppage */}
+            <button
+              className="signin_page_info"
+              onClick={routetosignuppagehandler}
+            >
               Don't have an account? Sign Up
             </button>
             <ToastContainer />
