@@ -14,7 +14,6 @@ const Component = styled(Box)`
 
 // Styled component for the divider
 const StyledDivider = styled(Divider)`
-    margin: 0 0 0 70px;
     background-color: #e9edef;
     opacity: .6;
 `;

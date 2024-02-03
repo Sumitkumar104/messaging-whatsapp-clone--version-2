@@ -12,7 +12,7 @@ const Component = styled(Box)`
 
 const Header = styled(AppBar)`
   background-color: #00a884;
-  height: 125px;
+  height: 6rem;
   box-shadow: none;
 `;
 

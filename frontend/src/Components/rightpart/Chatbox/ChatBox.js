@@ -24,7 +24,7 @@ function ChatBox() {
         // Updating the state with the fetched data
         setdata(dataa);
       } catch (error) {
-        console.error("Error fetching conversation details:", error.message);
+        console.error('Error fetching conversation details:', error.message);
       }
     };
 

@@ -1,35 +1,30 @@
 import React from 'react';
 import { Box, styled, InputBase } from '@mui/material';
-import {ChatFooterConfig} from '../../../../../config';
 
-const { inputPlaceholder } = ChatFooterConfig;
 // Styled components for styling the Chatfooter component
 const Container = styled(Box)`
-  height: 55px;
+  height: 3.5rem;
   background: #ededed;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 15px;
   & > * {
-    margin: 5px;
     color: #919191;
   }
 `;
 
 const Search = styled(Box)`
-  border-radius: 18px;
+  border-radius: 0.5rem;
   background-color: #FFFFFF;
-  width: calc(94% - 100px);
-  margin-left: 60px;
+  width: calc(94% - 5rem);
+  margin-left: 3rem;
 `;
 
 const InputField = styled(InputBase)`
   width: 100%;
-  padding: 20px;
-  padding-left: 25px;
-  font-size: 14px;
-  height: 20px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  height: 2.5rem;
   width: 100%;
 `;
 
@@ -41,7 +36,7 @@ function Chatfooter({ sendtext, settext, textt }) {
       <Search>
         {/* Input field for typing the message */}
         <InputField
-          placeholder={inputPlaceholder}
+          placeholder="Type a message"
           onChange={(e) => settext(e.target.value)} // Update the text in the state when input changes
           onKeyPress={(e) => sendtext(e)} // Trigger the sendtext function when a key is pressed
           value={textt} // The current value of the input field

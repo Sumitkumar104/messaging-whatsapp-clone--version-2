@@ -5,19 +5,21 @@ import { AccountContext } from '../../../../Contextapi/Accountprovider';
 // Styled components for styling the Scrollchat component
 const Wrapper = styled(Box)`
   background: #FFFFFF;
-  padding: 5px;
+  padding: 0.3rem;
   max-width: 60%;
   width: fit-content;
   display: flex;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   word-break: break-word;
+  margin:0.1rem 0;
 `;
 
 const Own = styled(Box)`
   background: #dcf8c6;
-  padding: 5px;
+  padding: 0.5rem;
   max-width: 60%;
   width: fit-content;
+  margin:0.1rem 0;
   margin-left: auto;
   display: flex;
   border-radius: 10px;
@@ -25,14 +27,14 @@ const Own = styled(Box)`
 `;
 
 const Text = styled(Typography)`
-  font-size: 14px;
-  padding: 0 25px 0 5px;
+  font-size: 1rem;
+  padding: 0 2rem 0 0.5rem;
 `;
 
 const Time = styled(Typography)`
-  font-size: 10px;
+  font-size: 0.6rem;
   color: #919191;
-  margin-top: 6px;
+  margin-top: 0.5rem;
   word-break: keep-all;
   margin-top: auto;
 `;

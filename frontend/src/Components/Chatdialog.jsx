@@ -13,12 +13,13 @@ const Component = styled(Box)`
 `;
 
 const LeftComponent = styled(Box)`
-    min-width: 450px;
+    min-width: 25rem;
+    height: 100%;
 `;
 
 const RightComponent = styled(Box)`
     width: 73%;
-    min-width: 300px;
+    min-width: 25rem;
     height: 100%;
     border-left: 1px solid rgba(0, 0, 0, 0.14);
 `;
@@ -27,7 +28,7 @@ const RightComponent = styled(Box)`
 const dialogStyle = {
     height: '95%',
     width: '100%',
-    margin: '20px',
+    margin: '2rem',
     maxWidth: '100%',
     maxHeight: '100%',
     borderRadius: 0,

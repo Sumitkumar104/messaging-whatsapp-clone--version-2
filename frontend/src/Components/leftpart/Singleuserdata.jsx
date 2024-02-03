@@ -4,7 +4,6 @@ import { AccountContext } from '../Contextapi/Accountprovider';
 import { setconversation } from '../Apiservice/api';
 import { getconversation } from '../Apiservice/api';
 import { styled, Box, Typography } from "@mui/material";
-import { DefaultPictureURL } from '../../config';
 
 // Function to format the timestamp
 const formatDate = (date) => {
@@ -15,18 +14,18 @@ const formatDate = (date) => {
 
 // Styled components for UI elements
 const Component = styled(Box)`
-  height: 45px;
+  height: 2.2rem;
   display: flex;
-  padding: 13px 0;
+  padding: 1rem 0;
   cursor: pointer;
 `;
 
 const Image = styled('img')({
-  width: 50,
-  height: 50,
+  width:"2rem",
+  height: "2rem",
   objectFit: 'cover',
   borderRadius: '50%',
-  padding: '0 14px'
+  padding: '0 1rem'
 });
 
 const Container = styled(Box)`
@@ -34,20 +33,20 @@ const Container = styled(Box)`
 `;
 
 const Timestamp = styled(Typography)`
-  font-size: 12px;
+  font-size: 0.7rem;
   margin-left: auto;
   color: #00000099;
-  margin-right: 20px;
+  margin-right: 1rem;
 `;
 
 const Text = styled(Typography)`
   display: block;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
+  font-size: 1rem;
 `;
 
 // Default picture URL when user picture is not available
-const emptypicture = DefaultPictureURL;
+const emptypicture = 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png';
 
 function Singleuserdata({ user }) {
   const url = user.picture || emptypicture; // Display picture URL
