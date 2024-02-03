@@ -1,39 +1,30 @@
 .Otp_Container{
     font-family: sans-serif;
+    height: 100vh;
     display: grid;
     justify-content: center;
+    align-items: center;
   }
-  .inner_Otp_Container{
-         margin-top: 10em;
-  }
+
   .otpInput {
-    width: 250px;
-    height: 40px;
-    margin: 5px;
+    width: 20rem;
+    height: 2rem;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     border-radius: 5px;
   }
   .Otp_page_info{
-    width:23em;
+    width:23rem;
   }
   .Otp_button{
-    margin:20px 5px;
+    margin:1.5rem 0.4rem;
      display: block;
-    padding: 10px 15px;
-    width: 25em;
+    padding: 0.8rem 0.5rem;
+    width: 20rem;
     border: none;
     outline: none;
     cursor: pointer;
     background-color: #0a856c;
     color: aliceblue;
     border-radius: 8px;
-  }
-  .Otppage_goto_loginpage{
-        margin-left: 10px;
-  }
-
-  .Otp_Page_buttom{
-    display: flex;
-    justify-content: space-between;
   }
