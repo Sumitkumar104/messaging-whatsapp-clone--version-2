@@ -9,7 +9,7 @@ import { getuser } from '../Apiservice/api';
 // Styled component for the main container
 const Component = styled(Box)`
     overflow: overlay;
-    height: 81vh;
+    height: 95.8vh;
 `;
 
 // Styled component for the divider
@@ -18,7 +18,6 @@ const StyledDivider = styled(Divider)`
     background-color: #e9edef;
     opacity: .6;
 `;
-
 // Component for displaying conversations
 const Conversations = () => {
     const [users, setUsers] = useState([]); // Represents all users present in the users database.

@@ -28,7 +28,10 @@ const Otppage = ({name,email,phonenumber,password,otp}) => {
     // Handle the API response
     if (response.status === 200) {
       // If signup is successful, set the account in context
-      setAccount(response.data);
+      
+      setAccount(response?.data?.user);
+      // console.log("token is ",response?.data?.token)
+      sessionStorage.setItem('token', response?.data?.token);
     }
     if (response.status === 203) {
       // If the user already exists with this email, show a toast notification

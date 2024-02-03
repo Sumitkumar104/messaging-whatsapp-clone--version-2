@@ -4,10 +4,12 @@ const app = express();
 const cors = require("cors");
 const { databaseconnection } = require("./database/db");
 const userroute = require("./route");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 // Enable JSON request parsing
 app.use(express.json());
+app.use(cookieParser());
   
 // Establish a connection to the database
 databaseconnection();
