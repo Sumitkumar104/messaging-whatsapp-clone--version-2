@@ -42,7 +42,7 @@ function Chatmessage({ person, conversation }) {
       setmessages(data);
     }
     getMessageDetails();
-  }, [conversation._id, person._id, newMessageFlag]);
+  }, [conversation?._id, person?._id, newMessageFlag]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
