@@ -62,7 +62,7 @@ export default function Signuppage() {
         // send otp to email
         //  demotest = generaterandomnumber();
         // setotp(demotest);
-        console.log(otp);
+        // console.log(otp);
         await sendotp({ email: email, otp: otp });
         setshowotppage(true);
     } catch (err) {
@@ -157,7 +157,6 @@ export default function Signuppage() {
                 value={confirmpassword}
                 onChange={(e) => setconfirmpassword(e.target.value)}
                 onBlur={() => {matchPass();
-                  setotp(generaterandomnumber())
                 }}
               />
               {!isSamePass && (

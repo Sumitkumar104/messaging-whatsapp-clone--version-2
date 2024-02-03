@@ -60,7 +60,7 @@ function Chatmessage({ person, conversation }) {
       let message = {
         senderid: account.sub,
         receiverid: person.sub,
-        conversationid: conversation._id,
+        conversationid: conversation?._id,
         type: 'text',
         text: textt,
       }

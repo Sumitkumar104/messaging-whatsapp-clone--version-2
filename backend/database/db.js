@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Function to establish a connection to the MongoDB database
 exports.databaseconnection = async () => {
-    const URL = `mongodb://localhost:27017/whatsapp_clone`; // MongoDB connection URL
+    const URL = `mongodb://localhost:27017/whatsappclone_data-version-2`; // MongoDB connection URL
 
     try {
         // Attempt to connect to the MongoDB database using Mongoose
