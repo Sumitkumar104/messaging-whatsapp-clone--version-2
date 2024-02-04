@@ -6,11 +6,13 @@ import { AccountContext } from '../Contextapi/Accountprovider';
 
 // Styled components for UI elements
 const Component = styled(Box)`
-  height: 25px;
+  height: 34px;
   display: flex;
   padding: 13px 0; 
   cursor: pointer;
   background: #215C54;
+  algin: center;
+
 `;
 
 const Image = styled('img')({
@@ -39,7 +41,7 @@ function Accountinfo() {
         <Image src={DefaultPictureURL} alt="display picture" />
       </Box>
    
-      <Box style={{ width: '100%' }}>
+      <Box style={{ width: '100%'}}>
         <Container>
           <Typography style={{ color: 'white' }} >{account?.name} - Welcome to WhatsApp!</Typography>
         </Container>
