@@ -38,7 +38,7 @@ function Chatmessage({ person, conversation }) {
 
   useEffect(() => {
     const getMessageDetails = async () => {
-      let data = await getmessagefromdatabase(conversation._id);
+      let data = await getmessagefromdatabase(conversation?._id);
       setmessages(data);
     }
     getMessageDetails();

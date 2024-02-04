@@ -5,18 +5,19 @@ import { AccountContext } from '../Contextapi/Accountprovider';
 // Components
 import Singleuserdata from './Singleuserdata';
 import { getuser } from '../Apiservice/api';
+import Accountinfo from './Accountinfo';
 
 // Styled component for the main container
 const Component = styled(Box)`
     overflow: overlay;
-    height: 95.8vh;
+    height: 88vh;
 `;
 
 // Styled component for the divider
 const StyledDivider = styled(Divider)`
-    margin: 0 0 0 70px;
+    margin: 0 0 0 80px;
     background-color: #e9edef;
-    opacity: .6;
+    opacity: .7;
 `;
 // Component for displaying conversations
 const Conversations = () => {
@@ -41,6 +42,8 @@ const Conversations = () => {
     }, [account])
 
     return (
+        <>
+        <Accountinfo/>
         <Component>
             {
                 users && users.map((user, index) => (
@@ -54,6 +57,7 @@ const Conversations = () => {
                 ))
             }
         </Component>
+        </>
     )
 }
 

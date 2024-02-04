@@ -62,7 +62,7 @@ export default function Signinpage() {
         }
 
         if (response.status === 203) {
-          toast(SigninConfig.messages.userAlreadyExists);
+          toast(response?.data);
         }
       } else {
         toast(SigninConfig.messages.enterCredentials);
