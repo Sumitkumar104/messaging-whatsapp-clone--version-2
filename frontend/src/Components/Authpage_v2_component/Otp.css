@@ -7,21 +7,21 @@
          margin-top: 10em;
   }
   .otpInput {
-    width: 250px;
-    height: 40px;
+    width: 20rem;
+    height: 2rem;
     margin: 5px;
     text-align: center;
     font-size: 1.2em;
     border-radius: 5px;
   }
   .Otp_page_info{
-    width:23em;
+    width:23rem;
   }
   .Otp_button{
-    margin:20px 5px;
+    margin: 1.5rem 0.4rem;
      display: block;
-    padding: 10px 15px;
-    width: 25em;
+    padding: 0.8rem 0.5rem;
+    width: 20rem;
     border: none;
     outline: none;
     cursor: pointer;
