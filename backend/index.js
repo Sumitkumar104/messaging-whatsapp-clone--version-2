@@ -19,6 +19,7 @@ databaseconnection();
 const PORT = process.env.PORT || 5000;
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
+app.get("/", (req, res) => res.send("your server is running"));
 
 // Enable CORS for all routes
 
